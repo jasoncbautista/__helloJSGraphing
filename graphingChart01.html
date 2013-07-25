@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages: ["corechart"]});
+
+
+
+      var generateRandomValue = function(highRange){
+        return Math.floor(Math.random()* highRange);
+      };
+
+      var drawChartCallback = function(){
+        var dataArray = [
+          ['Date', 'MiscValue'],
+          ['Thu Jul 25 2013 00:00:00 GMT-0700 (PDT)', 40],
+          ['Fri Jul 26 2013 00:00:00 GMT-0700 (PDT)', 50]
+        ];
+
+        var formattedData = google.visualization.arrayToDataTable(dataArray);
+
+        var options = {
+          title: "Super Chart"
+        };
+
+        var chartDiv = document.getElementById('chart_div');
+        var chart = new google.visualization.LineChart(chartDiv);
+        chart.draw(formattedData, options);
+      };
+      google.setOnLoadCallback(drawChartCallback);
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
